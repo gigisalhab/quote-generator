@@ -1,6 +1,5 @@
-// In App.js
 import React from 'react';
-import Dashboard from './Dashboard';  // Adjust the path based on where you save your Dashboard component
+import Dashboard from './Dashboard';  // 
 
 function App() {
   return (

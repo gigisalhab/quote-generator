@@ -49,6 +49,28 @@ function Dashboard() {
         fetchData();
     }, [location, locations]);
 
+    function getRecommendation(weather, airQuality) {
+        let message = '';
+        if (!weather || !airQuality) {
+            return message;
+        }
+    
+        const temp = weather.main.temp;
+        const aqi = airQuality.indexes[0].aqi;
+    
+        if (temp > 25 && aqi > 100) {
+            message = 'It is quite hot and the air quality is poor. Consider staying indoors or taking precautions if going outside.';
+        } else if (temp < 10) {
+            message = 'It is chilly. Dress warmly and check air quality advisories before planning outdoor activities.';
+        } else if (aqi > 150) {
+            message = 'Air quality is very poor. It is recommended to stay indoors or use air filtration masks if going outside.';
+        } else {
+            message = 'Weather and air quality are good. It is a great day to be outdoors!';
+        }
+    
+        return message;
+    }
+
     return (
         <Container>
             <FormControl fullWidth margin="normal">
@@ -64,7 +86,7 @@ function Dashboard() {
                     ))}
                 </Select>
             </FormControl>
-            <Typography variant="h4" gutterBottom>{weatherData ? `Weather & Air Quality Monitor for ${location}` : 'Loading...'}</Typography>
+            <Typography variant="h4" gutterBottom>{weatherData && airQualityData ? `Weather & Air Quality Monitor for ${location}` : 'Loading...'}</Typography>
             {error && <Typography color="error">{error}</Typography>}
             {weatherData ? (
                 <Card variant="outlined" sx={{ my: 2 }}>
@@ -92,8 +114,17 @@ function Dashboard() {
                     <CircularProgress />
                 </Box>
             )}
+            {weatherData && airQualityData && (
+            <Card variant="outlined" sx={{ my: 2 }}>
+                <CardContent>
+                    <Typography variant="h5">Recommendation</Typography>
+                    <Typography>{getRecommendation(weatherData, airQualityData)}</Typography>
+                </CardContent>
+            </Card>
+        )}
         </Container>
     );
+    
 }
 
 export default Dashboard;
