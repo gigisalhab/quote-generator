@@ -13,8 +13,8 @@ function Dashboard() {
         { name: 'Chicago', lat: 41.878113, lon: -87.629799 }
     ], []);
 
-    const weatherApiKey = 'd886d781466644d6be038d35c299267e';
-    const airQualityApiKey = 'AIzaSyAS3PvsHfUvxKss2H5LDz7wKLGKJ0salf0';
+    const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
+    const airQualityApiKey = process.env.REACT_APP_AIR_QUALITY_API_KEY;
 
     useEffect(() => {
         async function fetchData() {
@@ -58,18 +58,29 @@ function Dashboard() {
         const temp = weather.main.temp;
         const aqi = airQuality.indexes[0].aqi;
     
-        if (temp > 25 && aqi > 100) {
+        if (temp > 30 && aqi <= 50) {
+            message = 'It\'s very hot but the air is clean. Stay hydrated and wear sunscreen if you go outside.';
+        } else if (temp > 30 && aqi > 150) {
+            message = 'It\'s extremely hot and the air quality is poor. Avoid outdoor activities and stay hydrated.';
+        } else if (temp < 0 && aqi > 100) {
+            message = 'Freezing temperatures with poor air quality. Limit outdoor exposure and stay warm.';
+        } else if (temp < 0 && aqi <= 50) {
+            message = 'It\'s very cold but the air is clean. Dress warmly and enjoy outdoor activities safely.';
+        } else if (temp > 25 && aqi > 100) {
             message = 'It is quite hot and the air quality is poor. Consider staying indoors or taking precautions if going outside.';
-        } else if (temp < 10) {
+        } else if (temp < 13) {
             message = 'It is chilly. Dress warmly and check air quality advisories before planning outdoor activities.';
         } else if (aqi > 150) {
             message = 'Air quality is very poor. It is recommended to stay indoors or use air filtration masks if going outside.';
+        } else if (aqi < 50) {
+            message = 'The air quality is excellent. It\'s a great day for outdoor activities.';
         } else {
-            message = 'Weather and air quality are good. It is a great day to be outdoors!';
+            message = 'Weather and air quality are moderate. Enjoy your day, but stay aware of changes.';
         }
     
         return message;
     }
+    
 
     return (
         <Container>
