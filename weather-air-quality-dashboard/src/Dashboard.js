@@ -47,7 +47,7 @@ function Dashboard() {
         }
 
         fetchData();
-    }, [airQualityApiKey, weatherApiKey]);
+    }, [location, locations]);
 
     function getRecommendation(weather, airQuality) {
         let message = '';
