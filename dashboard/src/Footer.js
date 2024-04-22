@@ -1,6 +1,6 @@
 import React from 'react';
-import './Footer.css'; // Make sure to create this CSS file to style your footer
-import { ReactComponent as FacebookIcon } from './icons/Facebook.svg'; // Import your icons accordingly
+import './Footer.css'; 
+import { ReactComponent as FacebookIcon } from './icons/Facebook.svg'; 
 import { ReactComponent as TwitterIcon } from './icons/Twitter.svg';
 import { ReactComponent as InstagramIcon } from './icons/Instagram.svg';
 
@@ -26,9 +26,15 @@ const Footer = () => {
         <div className="social">
           <strong>SOCIAL</strong>
           <div className="social-icons">
-            <FacebookIcon />
-            <TwitterIcon />
-            <InstagramIcon />
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <FacebookIcon />
+            </a>
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+              <TwitterIcon />
+            </a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+              <InstagramIcon />
+            </a>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './MoodSection.css'; // Ensure this CSS file exists and has the below styles
+import './MoodSection.css'; 
 
 function MoodSection() {
   return (

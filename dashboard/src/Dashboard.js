@@ -8,7 +8,7 @@ function Dashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const moods = ['inspirational', 'reflective', 'sad', 'happy'];
+  const moods = ['inspirational', 'reflective', 'happy'];
 
   const fetchQuote = async (selectedMood) => {
     setIsLoading(true);
@@ -17,13 +17,12 @@ function Dashboard() {
       const moodTags = {
         inspirational: "inspiration|success",
         reflective: "wisdom|philosophy",
-        sad: "sadness|melancholy",
         happy: "happiness|joy"
       };
 
       const params = new URLSearchParams({
         tags: moodTags[selectedMood] || "famous",
-        limit: 10  // Fetch up to 10 quotes to increase the chance of randomness
+        limit: 10  
       });
 
       const url = `https://api.quotable.io/quotes?${params.toString()}`;
@@ -34,13 +33,11 @@ function Dashboard() {
       const { results } = await response.json();
 
       if (results && results.length > 0) {
-        // Select a random quote from the results
         const randomIndex = Math.floor(Math.random() * results.length);
         setQuote(results[randomIndex].content);
         setAuthor(results[randomIndex].author);
       } else {
         setError('No quotes found for the selected mood.');
-        // Optional: Load a fallback quote
         loadFallbackQuote();
       }
     } catch (err) {
@@ -72,14 +69,14 @@ function Dashboard() {
 
   return (
     <Container sx={{backgroundColor: '#9A879D' }}>
-      <FormControl fullWidth margin="normal" sx={{ background: 'white', borderRadius: '4px', boxShadow: 1, mt: 4}}>
-        {!mood && <InputLabel id="mood-select-label">Select Mood</InputLabel>}
+      <FormControl fullWidth margin="normal" sx={{ background: 'white', borderRadius: '4px', boxShadow: 1, mt: 8}}>
+        {!mood && <InputLabel id="mood-select-label">Select your Mood...</InputLabel>}
         <Select
           labelId="mood-select-label"
           id="mood-select"
           name="mood"
           value={mood}
-          label={!mood ? "Select Mood" : ''}
+          label={!mood ? "Select your Mood..." : ''}
           onChange={handleMoodChange}
           sx={{ borderRadius: '4px', '.MuiOutlinedInput-notchedOutline': { border: 'none' } }}
         >
@@ -95,11 +92,13 @@ function Dashboard() {
       ) : error ? (
         <Typography color="error">{error}</Typography>
       ) : (
-        <Card variant="outlined" sx={{ my: 2, background: 'white', borderRadius: '4px', boxShadow: 1, mb: 4 }}>
-          <CardContent>
-            <Typography variant="h5">{quote}</Typography>
-            <Typography variant="subtitle1" color="textSecondary">{`- ${author}`}</Typography>
-          </CardContent>
+        <Card variant="outlined" sx={{ my: 2, background: 'white', borderRadius: '4px', boxShadow: 1, mb: 8, padding: '32px' }}>
+            <CardContent>
+                <Typography variant="h4" component="p" sx={{ fontSize: '1.5rem', marginBottom: '20px' }}>{quote}</Typography>
+                {author && (
+                    <Typography variant="subtitle1" color="textSecondary">{`- ${author}`}</Typography>
+                )}
+            </CardContent>
         </Card>
       )}
     </Container>

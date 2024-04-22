@@ -1,6 +1,6 @@
 .header {
     display: flex;
-    flex-direction: column; /* Align items vertically */
+    flex-direction: column; 
     align-items: center;
     color: #091E05;
     padding: 2rem 0;
@@ -9,8 +9,8 @@
 
 .logo-title-container {
     display: flex;
-    align-items: center; /* Align items vertically */
-    justify-content: flex-start; /* Align items to the left */
+    align-items: center; 
+    
 }
 
 .header-title {
@@ -26,9 +26,9 @@
 }
 
 .slogan-image {
-    height: 300px; /* Set the height to 300px */
+    height: 300px; 
     width: auto;
-    margin-left: 100px; 
+    margin-left: 60px; 
   }
 
 /* Responsive adjustments */
@@ -53,3 +53,17 @@
         font-size: 1.5rem;
     }
 }
+
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Apply the animation to the header */
+  .header {
+    animation: slideInFromTop 1s ease;
+  }

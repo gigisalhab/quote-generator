@@ -1,45 +1,16 @@
-/* App.css */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 body {
-  font-family: 'Outfit', sans-serif; /* Outfit font for the body */
-  background-color: #D7DEDC; /* Light grayish-green background */
-  color: #563440; /* Dark brown text for good readability */
+  font-family: 'Outfit', sans-serif; 
+  background-color: #9A879D;
+  color: #563440; 
   margin: 0;
   padding: 0;
 }
 
 
 
-.footer {
-  background-color: #9A879D; /* Muted purple for the footer */
-  color: #fff; /* White text for the footer */
-  text-align: center;
-  padding: 10px 0;
-}
 
-.card {
-  background-color: #fff; /* White background for card */
-  color: #563440; /* Dark brown text for the card */
-  margin: 20px auto;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 80%;
-  border-left: 5px solid #7A3B69; /* Dark magenta border on the left */
-}
 
-button {
-  background-color: #7A3B69; /* Dark magenta for buttons */
-  color: #fff; /* White text for buttons */
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
-button:hover {
-  background-color: #563440; /* Dark brown for button hover state */
-}
 
-/* Add media query adjustments for responsiveness if needed */

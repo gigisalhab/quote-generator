@@ -13,7 +13,6 @@ function App() {
       <MoodSection />
       <Dashboard />
       <Footer />
-      
     </div>
   );
 }
