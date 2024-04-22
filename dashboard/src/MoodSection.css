@@ -1,0 +1,31 @@
+.mood-section {
+    padding: 20px;
+    background-color: #D7DEDC; /* This is the color you've chosen for the background */
+    display: flex; /* Use flexbox to arrange children side by side */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between the title and content */
+  }
+  
+  .mood-title {
+    /* If you want a fixed width or percentage of the container for the title */
+    flex-basis: 40%; /* Adjust the percentage as needed */
+    /* Add padding or margins as needed */
+  }
+  
+  .mood-content {
+    /* If you want a fixed width or percentage of the container for the content */
+    flex-basis: 60%; /* Adjust the percentage as needed */
+    /* Add padding or margins as needed */
+  }
+  
+  /* Responsive adjustments if needed */
+  @media (max-width: 768px) {
+    .mood-section {
+      flex-direction: column; /* Stack them on top of each other on smaller screens */
+    }
+  
+    .mood-title, .mood-content {
+      flex-basis: 100%; /* Each takes full width on smaller screens */
+    }
+  }
+  

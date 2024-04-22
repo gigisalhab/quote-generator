@@ -1,0 +1,33 @@
+.footer {
+    background-color: #563440; /* Adjust the color as needed */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .feedback-callout {
+    margin-bottom: 20px; /* Space between the text and the contact info */
+    font-size: 1.5rem; /* Adjust size as needed */
+  }
+  
+  .contact-info {
+    display: flex;
+    justify-content: space-around; /* Or use space-between for more separation */
+    align-items: center;
+  }
+  
+  .address, .phone, .email, .social {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center; /* This centers the icons horizontally */
+    height: 10px;
+    width: auto;
+  }
+  
+  .social-icons svg {
+    margin: 0 5px; /* Adds space between the icons */
+  }
+  
