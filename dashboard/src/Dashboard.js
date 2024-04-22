@@ -98,8 +98,9 @@ function Dashboard() {
                 {author && (
                     <Typography variant="subtitle1" color="textSecondary">{`- ${author}`}</Typography>
                 )}
-            </CardContent>
-        </Card>
+        </CardContent>
+    </Card>
+
       )}
     </Container>
   );
