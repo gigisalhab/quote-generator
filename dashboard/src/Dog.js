@@ -15,7 +15,7 @@ function Dog() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setImageUrl(data.message); // 'message' field contains the URL of the random dog image
+      setImageUrl(data.message); 
     } catch (err) {
       setError(`Failed to fetch image: ${err.message}`);
       console.error('Error fetching image:', err);
@@ -24,15 +24,15 @@ function Dog() {
   };
 
   return (
-    <Container sx={{
+    <Container maxWidth={false} sx={{
       backgroundColor: '#D7DEDC', 
       padding: '20px',
       marginTop: '20px',
       borderRadius: '8px',
       boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
     }}>
-      <Typography variant="h5" sx={{ mb: 2 }}>Click here for a quick smile!</Typography> {/* Updated title */}
-      <Button variant="contained" sx={{ backgroundColor: '#7A3B69' }} onClick={fetchRandomDogImage}> {/* Updated button color */}
+      <Typography variant="h5" sx={{ mb: 2 }}>Click here for a quick smile!</Typography> {/* title */}
+      <Button variant="contained" sx={{ backgroundColor: '#7A3B69' }} onClick={fetchRandomDogImage}> {/* button color */}
         Fetch Random Dog
       </Button>
       {isLoading ? (
@@ -43,7 +43,7 @@ function Dog() {
         <Typography color="error" sx={{ mt: 2 }}>{error}</Typography>
       ) : imageUrl ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
-          <img src={imageUrl} alt="Random Dog" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '8px' }} />
+          <img src={imageUrl} alt="Random Dog" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '8px', mb:4 }} />
         </Box>
       ) : null}
     </Container>
